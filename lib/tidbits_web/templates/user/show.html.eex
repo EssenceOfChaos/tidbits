@@ -1,0 +1,33 @@
+<h1>Show User</h1>
+
+<ul>
+
+  <li>
+    <strong>Display name:</strong>
+    <%= @user.display_name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </li>
+
+
+  <li>
+    <strong>Is admin:</strong>
+    <%= @user.is_admin %>
+  </li>
+
+  <li>
+    <strong>Avatar:</strong>
+    <%= @user.avatar %>
+  </li>
+
+</ul>
+
+<div class="ui buttons">
+  <%= link "Edit", to: Routes.user_path(@conn, :edit, @user), class: "ui button" %>
+  <div class="or"></div>
+  <%= link "Home", to: Routes.page_path(@conn, :index), class: "ui positive button" %>
+</div>
+

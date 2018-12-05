@@ -1,0 +1,5 @@
+<br>
+<div class="ui raised very padded text container segment">
+    <div class="ui header">Create an account</div>
+      <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
+</div>

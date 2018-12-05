@@ -1,0 +1,64 @@
+<div class="card-body">
+  <%= form_for @changeset, @action, [class: "ui form"], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger" role="alert">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+  <!-- Display name -->
+   <div class="field">
+    <%= label f, :display_name, class: "control-label" %>
+    <div class="ui left icon input">
+      <i class="user icon"></i>
+      <%= text_input f, :display_name, class: "form-control", autofocus: "true", placeholder: "Display name", required: "true"%>
+    </div>
+  </div> <!-- /Display name -->
+   <%= error_tag f, :display_name %>
+
+   <div class="field"> <!-- Email -->
+    <%= label f, :email, class: "control-label" %>
+    <div class="ui left icon input">
+      <i class="mail icon"></i>
+      <%= email_input f, :email, class: "form-control", placeholder: "Email address", required: "true" %>
+    </div>
+  </div> <!-- /Email -->
+    <%= error_tag f, :email %>
+
+  <div class="field"> <!-- Avatar -->
+   <%= label f, :avatar %>
+   <div class="ui left icon input">
+      <i class="image icon"></i>
+      <%= text_input f, :avatar, placeholder: "Url to profile image" %>
+    </div>
+  </div>
+   <%= error_tag f, :avatar %>
+
+   <div class="field">
+    <%= label f, :password, class: "control-label" %>
+    <div class="ui left icon input">
+      <i class="lock icon"></i>
+      <%= password_input f, :password, class: "form-control", autocomplete: "false", placeholder: "Minimum 6 characters" %>
+    </div>
+  </div>
+  <%= error_tag f, :password %>
+
+   <div class="field">
+    <%= label f, :password_confirmation, class: "control-label" %>
+    <div class="ui left icon input">
+      <i class="lock icon"></i>
+      <%= password_input f, :password_confirmation, class: "form-control", autocomplete: "false" %>
+    </div>
+  </div>
+  <%= error_tag f, :password_confirmation %>
+  <br>
+
+
+  <div class="form-group">
+    <%= submit "Submit", class: "ui teal fluid button" %>
+  </div>
+<% end %>
+
+</div>
+<br />
+
+

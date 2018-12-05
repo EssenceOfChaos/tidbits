@@ -1,0 +1,22 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "tidbits" %></h1>
+  <p>Small doses of powerful knowledge</p>
+</section>
+
+<section class="row">
+  <article class="column">
+    <h4>Resources</h4>
+    <ul>
+      <li>
+      <%= link "New Post", to: Routes.post_path(@conn, :new) %>
+      </li>
+      <li>
+      <%= link "All Posts", to: Routes.post_path(@conn, :index) %>
+      </li>
+      <li>
+
+      </li>
+    </ul>
+  </article>
+
+</section>

@@ -1,0 +1,5 @@
+<h1>Edit Profile</h1>
+<div class="ui raised very padded text container segment">
+<%= render "update_profile.html", Map.put(assigns, :action, Routes.user_path(@conn, :update, @user)) %>
+</div>
+<span><%= link "Back", to: Routes.user_path(@conn, :index), class: "ui secondary button" %></span>

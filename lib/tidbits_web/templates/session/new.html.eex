@@ -1,0 +1,42 @@
+
+<br>
+<!-- Login Form -- New Session -->
+<div class="ui raised very padded text container segment">
+    <div class="ui header">Login</div>
+      <div class="card-body">
+        <%= form_for @conn, Routes.session_path(@conn, :create), [as: :session, class: "ui form"], fn f-> %>
+          <!-- Email -->
+         <div class="field">
+            <%= label f, :email, class: "control-label" %>
+            <div class="ui left icon input">
+              <i class="mail icon"></i>
+              <%= email_input f, :email, class: "form-control", placeholder: "Email address", autofocus: "true" %>
+            </div>
+            <%= error_tag f, :email %>
+          </div>
+          <!-- /Email -->
+          <!-- Password -->
+        <div class="field">
+          <%= label f, :password, class: "control-label" %>
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <%= password_input f, :password, class: "form-control", autocomplete: "false", placeholder: "Minimum 6 characters" %>
+          </div>
+          <%= error_tag f, :password %>
+        </div>
+        <!-- /Password -->
+
+        <div class="text-center">
+          <%= submit "Log In", class: "ui primary fluid button" %>
+        </div>
+
+        <% end %>
+      </div>
+
+      <br>
+      <div class="alert alert-info center" role="alert">
+        <span class="spacer">Don't have an account?</span>
+          <%= link raw(~s'<i class="user outline icon"></i>Sign up'), to: Routes.user_path(@conn, :new), class: "ui teal tiny button" %>
+      </div>
+
+</div>

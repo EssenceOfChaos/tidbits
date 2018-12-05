@@ -1,0 +1,48 @@
+<h1>Show Post</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @post.title %>
+  </li>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @post.body %>
+  </li>
+
+  <li>
+    <strong>Published:</strong>
+    <%= @post.published %>
+  </li>
+
+  <li>
+    <strong>Image:</strong>
+    <%= @post.image %>
+  </li>
+
+  <li>
+    <strong>Likes:</strong>
+    <%= @post.likes %>
+  </li>
+
+    <li>
+    <strong>Created:</strong>
+    <%= @post.inserted_at.month %>/
+    <%= @post.inserted_at.day %>/
+    <%= @post.inserted_at.year %>
+  </li>
+
+    <li>
+    <strong>Author:</strong>
+    <%= @post.user.display_name %>
+  </li>
+
+</ul>
+
+<div class="ui buttons">
+  <%= link "Edit", to: Routes.post_path(@conn, :edit, @post), class: "ui button" %>
+  <div class="or"></div>
+  <%= link "Back", to: Routes.post_path(@conn, :index), class: "ui positive button" %>
+</div>

@@ -1,0 +1,29 @@
+<nav class="ui fixed inverted menu">
+    <div class="ui container">
+      <a href="/" class="header item">
+        <img class="logo" src="">
+       <span class="app-name"> tidbits </span>
+      </a>
+      <%= if Tidbits.Accounts.get_current_user(@conn) do %>
+      <div class="item">
+        <%= link "Profile", to: Routes.user_path(@conn, :show, Tidbits.Accounts.get_current_user(@conn)) %>
+      </div>
+      <% end %>
+
+        <div class="right menu">
+        <%= if Tidbits.Accounts.get_current_user(@conn) do %>
+        <div class="item">
+         <%= link raw(~s'<i class="sign out alternate icon"></i>Logout'), to: Routes.session_path(@conn, :new), method: :delete, class: "ui red button" %>
+        </div>
+        <% else %>
+        <div class="item">
+          <%= link raw(~s'<i class="sign in alternate icon"></i>Login'), to: Routes.session_path(@conn, :new), class: "ui primary button"%>
+        </div>
+        <div class="item">
+          <%= link raw(~s'<i class="user icon"></i>Sign up'), to: Routes.user_path(@conn, :new), class: "ui teal button" %>
+        </div>
+        <% end %>
+
+        </div>
+    </div>
+  </nav>
