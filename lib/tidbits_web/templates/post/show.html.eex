@@ -40,9 +40,16 @@
   </li>
 
 </ul>
-<%= link "Delete", to: Routes.post_path(@conn, :delete, @post), method: :delete, data: [confirm: "Are you sure?"] %>
+
 <div class="ui buttons">
   <%= link "Edit", to: Routes.post_path(@conn, :edit, @post), class: "ui button" %>
   <div class="or"></div>
   <%= link "Back", to: Routes.post_path(@conn, :index), class: "ui positive button" %>
+</div>
+
+<br>
+<div class="delete-post">
+  <%= if @post.user.id == assigns[:current_user].id do %>
+  <%= link "Delete", to: Routes.post_path(@conn, :delete, @post), method: :delete, data: [confirm: "Are you sure?"], class: "ui red button" %>
+  <%end%>
 </div>

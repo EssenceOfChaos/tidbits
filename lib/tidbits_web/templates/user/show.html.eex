@@ -15,7 +15,7 @@
 
   <li>
     <strong>Avatar:</strong>
-    <%= @user.avatar %>
+   <%= gravatar(@user.email)%>
   </li>
 
 </ul>

@@ -1,6 +1,8 @@
 defmodule TidbitsWeb.Router do
   use TidbitsWeb, :router
   alias Tidbits.Plug
+import Tidbits.Accounts, only: [load_current_user: 2]
+
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -9,6 +11,8 @@ defmodule TidbitsWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug Plug.Authentication
+    plug(:load_current_user)
+
   end
 
   pipeline :api do
@@ -37,4 +41,17 @@ defmodule TidbitsWeb.Router do
   # scope "/api", TidbitsWeb do
   #   pipe_through :api
   # end
+
+  # Private
+  # defp put_user_token(conn, _) do
+  #   if current_user = conn.assigns[:current_user] do
+  #     token = Phoenix.Token.sign(conn, "user socket", current_user.id)
+  #     assign(conn, :user_token, token)
+  #   else
+  #     conn
+  #   end
+  # end
+
+
+
 end

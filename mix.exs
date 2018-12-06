@@ -48,7 +48,9 @@ defmodule Tidbits.MixProject do
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.0"},
       {:argon2_elixir, "~> 1.3"},
-      {:slugger, "~> 0.3"}
+      {:slugger, "~> 0.3"},
+      {:httpoison, "~> 1.4"},
+      {:exgravatar, "~> 2.0"}
     ]
   end
 

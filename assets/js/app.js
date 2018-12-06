@@ -15,7 +15,8 @@ import "phoenix_html"
 // Import local files
 //
 // Local files can be imported directly using relative paths, for example:
-// import socket from "./socket"
+import base from "./base"
+import socket from "./socket"
 // import {Socket, Presence} from "phoenix"
 
 // let socket = new Socket("/socket", {
@@ -43,7 +44,4 @@ import "phoenix_html"
 
 // channel.join()
 
-document.addEventListener('DOMContentLoaded', function(event) {
-  $('select.dropdown')
-  .dropdown();
-})
+

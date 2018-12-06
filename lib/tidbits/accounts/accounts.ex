@@ -9,7 +9,7 @@ defmodule Tidbits.Accounts do
   alias Tidbits.Accounts.{User, Guardian}
   alias Comeonin.Argon2
 
-## Dealing with users ##
+  ## Dealing with users ##
   def list_users do
     Repo.all(User)
   end
@@ -18,7 +18,6 @@ defmodule Tidbits.Accounts do
     Repo.get!(User, id)
     |> Repo.preload(:posts)
   end
-
 
   def create_user(attrs \\ %{}) do
     %User{}
@@ -31,7 +30,6 @@ defmodule Tidbits.Accounts do
     |> User.changeset(attrs)
     |> Repo.update()
   end
-
   def delete_user(%User{} = user) do
     Repo.delete(user)
   end
@@ -82,11 +80,20 @@ defmodule Tidbits.Accounts do
     end
   end
 
-  defp put_user_token(conn, user) do
-    token = Phoenix.Token.sign(conn, "user socket", user.id)
+  # defp put_user_token(conn, user) do
+  #   token = Phoenix.Token.sign(conn, "user socket", user.id)
 
-    conn
-    |> assign(:user_token, token)
+  #   conn
+  #   |> assign(:user_token, token)
+  # end
+
+  defp put_user_token(conn, user) do
+    if user != nil do
+      token = Phoenix.Token.sign(conn, "user socket", user.id)
+      assign(conn, :user_token, token)
+    else
+      conn
+    end
   end
 
 end

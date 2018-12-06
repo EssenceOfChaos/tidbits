@@ -10,9 +10,11 @@ defmodule TidbitsWeb.SessionController do
     case Accounts.authenticate_user(email, password) do
       {:ok, user} ->
         conn
+        |> put_session(:user_id, user.id)
         |> Accounts.login(user)
         |> put_flash(:info, "You have successfully logged in!")
-        |> redirect_after_login(user)
+        |> redirect(to: Routes.page_path(conn, :index))
+        # |> redirect_after_login(user)
 
       {:error, _} ->
         conn
@@ -30,11 +32,11 @@ defmodule TidbitsWeb.SessionController do
 
   # Private
 
-  defp redirect_after_login(conn, user) do
-    case user.admin do
-      true -> redirect(conn, to: Routes.admin_home_path(conn, :index))
-      false -> redirect(conn, to: Routes.page_path(conn, :index))
-    end
-  end
+  # defp redirect_after_login(conn, user) do
+  #   case user.admin do
+  #     true -> redirect(conn, to: Routes.admin_home_path(conn, :index))
+  #     false -> redirect(conn, to: Routes.page_path(conn, :index))
+  #   end
+  # end
 
 end

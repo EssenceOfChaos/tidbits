@@ -15,5 +15,16 @@
       </li>
     </ul>
   </article>
-
 </section>
+
+<div>
+ <%= if current_user = assigns[:current_user] do %>
+ <p>The current user assigns current user!!!</p>
+ <% end %>
+</div>
+
+<div class="ui raised segment">
+<div id="messages"></div>
+<input id="chat-input" type="text">
+
+</div>

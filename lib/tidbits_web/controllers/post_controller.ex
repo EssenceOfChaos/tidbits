@@ -4,10 +4,10 @@ defmodule TidbitsWeb.PostController do
   alias Tidbits.Content
   alias Tidbits.Content.Post
 
-
   def index(conn, params) do
     posts = Content.list_posts(params)
     render(conn, "index.html", posts: posts)
+
   end
 
   def new(conn, _params) do
@@ -63,11 +63,18 @@ defmodule TidbitsWeb.PostController do
   end
 
   def delete(conn, %{"id" => id}) do
-    post = Content.get_post!(id)
+    # post = Content.get_post!(id)
+    current_user = Guardian.Plug.current_resource(conn)
+    post = Content.get(id, true)
+    if post.user.id == current_user.id do
     {:ok, _post} = Content.delete_post(post)
-
     conn
     |> put_flash(:info, "Post deleted successfully.")
     |> redirect(to: Routes.post_path(conn, :index))
+    else
+      conn
+      |> put_flash(:error, "Sorry, only authors may delete their posts!")
+      |> redirect(to: Routes.post_path(conn, :index))
+    end
   end
 end

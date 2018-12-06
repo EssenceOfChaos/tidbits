@@ -87,3 +87,6 @@ select {
   text-align: center;
 }
 
+.delete-post {
+  margin-top: 1rem;
+}
