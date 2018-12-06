@@ -11,9 +11,19 @@
       <% end %>
 
         <div class="right menu">
+
         <%= if Tidbits.Accounts.get_current_user(@conn) do %>
         <div class="item">
-         <%= link raw(~s'<i class="sign out alternate icon"></i>Logout'), to: Routes.session_path(@conn, :new), method: :delete, class: "ui red button" %>
+         <%= link raw(~s'<i class="sign out alternate icon"></i>Logout'), to: Routes.session_path(@conn, :new), method: :delete, class: "tiny ui compact red button" %>
+        </div>
+          <div class="item">
+            <div class="ui icon input">
+            <%= form_for @conn, Routes.post_path(@conn, :index),
+            [method: :get, class: "ui search"], fn f -> %>
+            <%= search_input f, :query, class: "prompt", placeholder: "search for posts..." %>
+            <%= submit "Search", class: "ui compact inverted primary button" %>
+            <% end %>
+          </div>
         </div>
         <% else %>
         <div class="item">

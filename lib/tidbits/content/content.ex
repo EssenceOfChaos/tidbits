@@ -9,8 +9,11 @@ defmodule Tidbits.Content do
   alias Tidbits.Content.Post
   alias Tidbits.Accounts.User
 
-  def list_posts do
-    Repo.all(Post)
+  def list_posts(params) do
+    search_term = get_in(params, ["query"])
+    Post
+    |> Post.search(search_term)
+    |> Repo.all()
   end
 
   def get_post!(id), do: Repo.get!(Post, id)

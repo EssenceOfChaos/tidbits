@@ -1,34 +1,31 @@
 <h1>Listing Posts</h1>
-
-<table>
+<table class="ui fixed single line celled table">
   <thead>
     <tr>
       <th>Title</th>
       <th>Body</th>
-      <th>Published</th>
       <th>Image</th>
-      <th>Likes</th>
-
-      <th></th>
+      <th class="two wide">Likes</th>
     </tr>
   </thead>
   <tbody>
 <%= for post <- @posts do %>
     <tr>
-      <td><%= post.title %></td>
+      <td><%= link post.title, to: Routes.post_path(@conn, :show, post) %></td>
       <td><%= post.body %></td>
-      <td><%= post.published %></td>
       <td><%= post.image %></td>
       <td><%= post.likes %></td>
-
-      <td>
-        <%= link "Show", to: Routes.post_path(@conn, :show, post) %>
-        <%= link "Edit", to: Routes.post_path(@conn, :edit, post) %>
-        <%= link "Delete", to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"] %>
-      </td>
     </tr>
 <% end %>
   </tbody>
+  <tfoot>
+  <tr>
+    <th><%=length(@posts)%> <%=ngettext("Total Post", "Total Posts", length(@posts))%></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </tfoot>
 </table>
 
 <span><%= link "New Post", to: Routes.post_path(@conn, :new), class: "ui primary button" %></span>

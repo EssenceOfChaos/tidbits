@@ -2,6 +2,7 @@ defmodule Tidbits.Content.Post do
   use Ecto.Schema
   import Ecto.Changeset
   alias Tidbits.Accounts.User
+  import Ecto.Query, only: [from: 2]
 
   @derive {Phoenix.Param, key: :slug}
 
@@ -12,6 +13,8 @@ defmodule Tidbits.Content.Post do
     field :likes, :integer, default: 0
     field :published, :boolean, default: false
     field :title, :string
+    field :tags, {:array, :string}
+    field :editors_pick, :boolean, default: false
     belongs_to :user, User
 
     timestamps()
@@ -35,5 +38,14 @@ defmodule Tidbits.Content.Post do
   end
 
   defp process_slug(changeset), do: changeset
+
+  def search(query, search_term) do
+    wildcard_search = "%#{search_term}%"
+
+    from(post in query,
+      where: ilike(post.title, ^wildcard_search),
+      or_where: ilike(post.body, ^wildcard_search)
+    )
+  end
 
 end

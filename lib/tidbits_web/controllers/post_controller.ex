@@ -5,8 +5,8 @@ defmodule TidbitsWeb.PostController do
   alias Tidbits.Content.Post
 
 
-  def index(conn, _params) do
-    posts = Content.list_posts()
+  def index(conn, params) do
+    posts = Content.list_posts(params)
     render(conn, "index.html", posts: posts)
   end
 
@@ -35,7 +35,6 @@ defmodule TidbitsWeb.PostController do
   end
 
   def edit(conn, %{"id" => id}) do
-    # post = Content.get(id)
     current_user = Guardian.Plug.current_resource(conn)
     post = Content.get(id, true)
       if post.user.id == current_user.id do

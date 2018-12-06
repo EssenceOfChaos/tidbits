@@ -3,6 +3,7 @@
 // its own CSS file.
 import css from "../css/app.css"
 
+
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
 // in "webpack.config.js".
@@ -41,3 +42,8 @@ import "phoenix_html"
 // presence.onSync(() => renderOnlineUsers(presence))
 
 // channel.join()
+
+document.addEventListener('DOMContentLoaded', function(event) {
+  $('select.dropdown')
+  .dropdown();
+})

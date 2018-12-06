@@ -40,7 +40,7 @@
   </li>
 
 </ul>
-
+<%= link "Delete", to: Routes.post_path(@conn, :delete, @post), method: :delete, data: [confirm: "Are you sure?"] %>
 <div class="ui buttons">
   <%= link "Edit", to: Routes.post_path(@conn, :edit, @post), class: "ui button" %>
   <div class="or"></div>

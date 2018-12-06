@@ -1,11 +1,6 @@
-<h1>Show User</h1>
+<h1><%=@user.display_name %>'s Profile</h1>
 
 <ul>
-
-  <li>
-    <strong>Display name:</strong>
-    <%= @user.display_name %>
-  </li>
 
   <li>
     <strong>Email:</strong>

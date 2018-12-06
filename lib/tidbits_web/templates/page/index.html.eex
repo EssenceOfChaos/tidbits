@@ -13,9 +13,6 @@
       <li>
       <%= link "All Posts", to: Routes.post_path(@conn, :index) %>
       </li>
-      <li>
-
-      </li>
     </ul>
   </article>
 

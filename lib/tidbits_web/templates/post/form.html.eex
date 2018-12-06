@@ -19,14 +19,6 @@
   <%= error_tag f, :body %>
 </div>
 
-<div class="inline field">
-<div class="ui toggle checkbox">
-  <%= checkbox f, :published %>
-   <%= label f, :publish_on_save? %>
-</div>
-</div>
-<%= error_tag f, :published %>
-
 <div class="field">
   <%= label f, :image %>
   <div class="ui left icon input">
@@ -36,7 +28,32 @@
 </div>
   <%= error_tag f, :image %>
 
+    <div class="field">
+       <label>Tags</label>
+       <small>choose up to 3 tags</small>
+       <%= multiple_select(f, :tags, [
+         "Functional programming",
+         "JavaScript",
+         "Bitcoin",
+         "Blockchain",
+         "Data Science",
+         "Elixir",
+         "Phoenix",
+         "Golang",
+         "Erlang",
+         "GenServer",
+         "Supervisor",
+         "Docker",
+         "Kubernetes",
+         "Containerization",
+         "Machine Learning",
+         "Data structures",
+         "Algorithms",
+         "HTTP/2"
+       ], class: "ui dropdown") %>
+    </div>
+<br>
   <div>
-    <%= submit "Save", class: "ui primary button" %>
+    <%= submit "Save", class: "ui large primary button" %>
   </div>
 <% end %>
