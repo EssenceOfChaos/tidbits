@@ -3,8 +3,8 @@ defmodule TidbitsWeb.UserControllerTest do
 
   alias Tidbits.Accounts
 
-  @create_attrs %{avatar: "some avatar", display_name: "some display_name", email: "some email", is_admin: true, password_hash: "some password_hash"}
-  @update_attrs %{avatar: "some updated avatar", display_name: "some updated display_name", email: "some updated email", is_admin: false, password_hash: "some updated password_hash"}
+  @create_attrs %{avatar: "https://i.imgur.com/egBSAAb.png", display_name: "Bruce Wayne", email: "thebatman@aol.com", is_admin: true, password_hash: "hashthatpass123"}
+  @update_attrs %{avatar: "https://i.imgur.com/LYBOHQe.jpg", display_name: "The Wayne Man", email: "thebat@aol.com", is_admin: false, password_hash: "hashitagain1234"}
   @invalid_attrs %{avatar: nil, display_name: nil, email: nil, is_admin: nil, password_hash: nil}
 
   def fixture(:user) do

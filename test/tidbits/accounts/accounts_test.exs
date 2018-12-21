@@ -6,8 +6,8 @@ defmodule Tidbits.AccountsTest do
   describe "users" do
     alias Tidbits.Accounts.User
 
-    @valid_attrs %{avatar: "some avatar", display_name: "some display_name", email: "some email", is_admin: true, password_hash: "some password_hash"}
-    @update_attrs %{avatar: "some updated avatar", display_name: "some updated display_name", email: "some updated email", is_admin: false, password_hash: "some updated password_hash"}
+    @valid_attrs %{avatar: "https://i.imgur.com/egBSAAb.png", display_name: "cooldude19", email: "cooldude@aol.com", is_admin: false, password_hash: "abc123"}
+    @update_attrs %{avatar: "https://i.imgur.com/XHz8rWj.png", display_name: "updated-dude19", email: "cooldude2@aol.com", is_admin: false, password_hash: "abc123123abc"}
     @invalid_attrs %{avatar: nil, display_name: nil, email: nil, is_admin: nil, password_hash: nil}
 
     def user_fixture(attrs \\ %{}) do

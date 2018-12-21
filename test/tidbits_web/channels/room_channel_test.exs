@@ -3,7 +3,7 @@ defmodule TidbitsWeb.RoomChannelTest do
 
   setup do
     {:ok, _, socket} =
-      socket(TidbitsWeb.UserSocket, "user_id", %{some: :assign})
+      socket(TidbitsWeb.UserSocket, "user_id", %{current_user_id: 4})
       |> subscribe_and_join(TidbitsWeb.RoomChannel, "room:lobby")
 
     {:ok, socket: socket}

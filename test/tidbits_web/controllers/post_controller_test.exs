@@ -3,8 +3,8 @@ defmodule TidbitsWeb.PostControllerTest do
 
   alias Tidbits.Content
 
-  @create_attrs %{body: "some body", image: "some image", likes: 42, published: true, title: "some title"}
-  @update_attrs %{body: "some updated body", image: "some updated image", likes: 43, published: false, title: "some updated title"}
+  @create_attrs %{body: "The content of said post lives here.", image: "https://i.imgur.com/TWcsk3n.jpg", likes: 42, published: true, title: "Great Post"}
+  @update_attrs %{body: "An updated post lives here, friend", image: "https://i.imgur.com/o5nAM0I.jpg", likes: 13, published: false, title: "Title Anew"}
   @invalid_attrs %{body: nil, image: nil, likes: nil, published: nil, title: nil}
 
   def fixture(:post) do
