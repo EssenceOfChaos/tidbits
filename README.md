@@ -5,7 +5,8 @@ A working demo of an Elixir/Phoenix application that attempts to follow best pra
 ## Features
 
   * User authentication & authorization using JSON Web Tokens [JWT](https://jwt.io/) via the [Guardian](https://github.com/ueberauth/guardian) library.
-  * Database persistence with [Postgres](https://www.postgresql.org/), including modeling `has_many` and `belongs_to` relationships, input validation, and default values. We'll  also use trigger procedures and `pg_notify` to create a real-time pub/sub feature, pushing updates to the UI from the database.
+  * Database persistence with [Postgres](https://www.postgresql.org/), including modeling `has_many` and `belongs_to` relationships, input validation, and default values. We'll  also use trigger procedures and `pg_notify` to create a real-time pub/sub feature, pushing updates to the UI from the database layer.
+  * Implementing named slugs - Post title used as resource location. Instead of `posts/1` the resource is accessed at `posts/post.title`, providing more meaningful routes and greatly improved SEO.
   * Support for standard CRUD operations via a RESTful API. Authentication prevents users from editing or deleting posts that they did not create themselves.
   * Real-time bidirectional communication via [Phoenix Channels](https://hexdocs.pm/phoenix/Phoenix.Channel.html#content), which utilize websockets.
 

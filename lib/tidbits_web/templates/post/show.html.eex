@@ -1,45 +1,28 @@
 <h1>Show Post</h1>
-
-<ul>
-
-  <li>
-    <strong>Title:</strong>
-    <%= @post.title %>
-  </li>
-
-  <li>
-    <strong>Body:</strong>
-    <%= @post.body %>
-  </li>
-
-  <li>
-    <strong>Published:</strong>
-    <%= @post.published %>
-  </li>
-
-  <li>
-    <strong>Image:</strong>
-    <%= @post.image %>
-  </li>
-
-  <li>
-    <strong>Likes:</strong>
-    <%= @post.likes %>
-  </li>
-
-    <li>
-    <strong>Created:</strong>
-    <%= @post.inserted_at.month %>/
-    <%= @post.inserted_at.day %>/
-    <%= @post.inserted_at.year %>
-  </li>
-
-    <li>
-    <strong>Author:</strong>
-    <%= @post.user.display_name %>
-  </li>
-
-</ul>
+<div class="ui card">
+  <div class="image">
+    <img src="<%= @post.image %>">
+  </div>
+  <div class="content">
+    <div class="header"><%= @post.title %></div>
+    <div class="description">
+      <%= @post.body %>
+    </div>
+  </div>
+    <div class="extra content">
+      <span class="date"><strong>Published:</strong>
+      <%= @post.inserted_at.month %>/
+      <%= @post.inserted_at.day %>/
+      <%= @post.inserted_at.year %></span>
+    </div>
+    <div class="extra content">
+     <span class="right floated">
+       <strong>Likes:</strong> <%= @post.likes %>
+      </span>
+      <strong>Author: </strong> <%= @post.user.display_name %>
+    </div>
+    <%= link raw(~s'<i class="thumbs up icon"></i>Like'), to: Routes.post_path(@conn, :upvote, @post), method: :post, class: "ui bottom attached button"%>
+  </div>
 
 <div class="ui buttons">
   <%= link "Edit", to: Routes.post_path(@conn, :edit, @post), class: "ui button" %>

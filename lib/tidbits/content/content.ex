@@ -48,6 +48,23 @@ defmodule Tidbits.Content do
     Post.changeset(post, %{})
   end
 
+    @doc """
+    Upvotes and Downvotes posts
+  """
+  def upvote_post(%Post{} = post) do
+    likes = post.likes || 0
+    post
+    |> Post.changeset(%{likes: likes + 1})
+    |> Repo.update()
+  end
+
+  def downvote_post(%Post{} = post) do
+    likes = post.likes || 0
+    post
+    |> Post.changeset(%{likes: likes - 1})
+    |> Repo.update()
+end
+
     # Private functions
     defp put_user(changeset, user) do
       Ecto.Changeset.put_assoc(changeset, :user, user)

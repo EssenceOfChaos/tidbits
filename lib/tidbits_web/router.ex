@@ -29,6 +29,9 @@ import Tidbits.Accounts, only: [load_current_user: 2]
     get "/", PageController, :index
     resources "/users", UserController
     resources "/posts", PostController, only: [:index]
+    post "/posts/:id/upvote", PostController, :upvote
+    post "/posts/:id/downvote", PostController, :downvote
+
     resources("/session", SessionController, only: [:create, :new, :delete])
   end
 
